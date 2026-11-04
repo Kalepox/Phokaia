@@ -1,4 +1,4 @@
-package com.phokaia.notification.entities;
+package com.phokaia.transaction.entities;
 
 public enum TransactionStatus {
 
