@@ -26,16 +26,7 @@ public final class TransactionDTO {
         BigDecimal amount
     ){}
 
-    /** JSON out: the transfer and its current status */
-    public record Response(
-        String transactionId,
-        String fromAccountCode,
-        String toAccountCode,
-        BigDecimal amount,
-        TransactionStatus status,
-        String failureReason,
-        Instant createdAt,
-        Instant updatedAt
+    public record Response(String transactionId, String fromAccountCode, String toAccountCode, BigDecimal amount, TransactionStatus status, String failureReason, Instant createdAt, Instant updatedAt
     ){
         public static Response from(Transaction transaction){
             return new Response(
