@@ -7,14 +7,17 @@ import org.springframework.transaction.annotation.Transactional;
 import com.phokaia.transaction.exceptions.*;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import com.phokaia.transaction.kafka.TransactionEventProducer;
 
 @Service
 public class TransactionService {
 
     private final TransactionRepository transactionRepository;
+    private final TransactionEventProducer eventProducer;
 
-    public TransactionService(TransactionRepository transactionRepository){
+    public TransactionService(TransactionRepository transactionRepository, TransactionEventProducer eventProducer){
         this.transactionRepository = transactionRepository;
+        this.eventProducer = eventProducer;
     }
 
 
@@ -26,6 +29,7 @@ public class TransactionService {
 
         Transaction transaction = new Transaction(request.fromAccountCode(), request.toAccountCode(), request.amount());
         Transaction saved = transactionRepository.save(transaction);
+        eventProducer.publishRequested(saved);
         return TransactionDTO.Response.from(saved);
     }
 
