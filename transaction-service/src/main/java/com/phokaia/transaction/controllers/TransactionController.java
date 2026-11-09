@@ -2,14 +2,14 @@ package com.phokaia.transaction.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import com.phokaia.transaction.services.TransactionService;
-import com.phokaia.transaction.entities.Transaction;
+
 import org.springframework.http.HttpStatus;
 import com.phokaia.transaction.dtos.TransactionDTO;
 import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/transactions")
 public class TransactionController {
 
     private final TransactionService transactionService;
@@ -18,7 +18,7 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @PostMapping 
+    @PostMapping("/transfer")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public TransactionDTO.Response create(@Valid @RequestBody TransactionDTO.TransferRequest request){
         return transactionService.requestTransaction(request);
