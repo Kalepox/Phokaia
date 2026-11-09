@@ -19,9 +19,8 @@ public class Transaction {
     @Column(nullable = false, length = 20, updatable =false)
     private String toAccountCode;
 
-    @Column(nullable = false, precision = 19, scale = 2, updatable = false, length = 20)
+    @Column(nullable = false, precision = 19, scale = 2, updatable = false)
     private BigDecimal amount;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private TransactionStatus status;
