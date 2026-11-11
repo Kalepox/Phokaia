@@ -31,15 +31,15 @@ flowchart LR
     tdb[(transaction-db<br/>Postgres :5433)]
     kafka{{Kafka :9092}}
 
-    client -- REST + DTOs --> AC
-    client -- REST + DTOs --> TC
+    client -->|"REST + DTOs"| AC
+    client -->|"REST + DTOs"| TC
     AR --> adb
     TR --> tdb
-    TP -- transaction.requested --> kafka
-    kafka -. transaction.requested .-> AS
-    AS -. transaction.completed / failed .-> kafka
-    kafka -. transaction.completed / failed .-> TS
-    kafka -. transaction.completed / failed .-> NS
+    TP -->|"transaction.requested"| kafka
+    kafka -.->|"transaction.requested"| AS
+    AS -.->|"transaction.completed / failed"| kafka
+    kafka -.->|"transaction.completed / failed"| TS
+    kafka -.->|"transaction.completed / failed"| NS
 ```
 
 Solid arrows exist today; dotted arrows are the planned event flow.
