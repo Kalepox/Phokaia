@@ -46,6 +46,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Kafka: @KafkaListener (receive) and KafkaTemplate (send) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-kafka</artifactId>
+        </dependency>
+
         <!-- Swagger UI: interactive API docs at /swagger-ui.html -->
         <dependency>
             <groupId>org.springdoc</groupId>
