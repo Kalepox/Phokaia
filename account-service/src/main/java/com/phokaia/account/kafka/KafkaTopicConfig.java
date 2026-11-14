@@ -8,7 +8,7 @@ import org.springframework.kafka.config.TopicBuilder;
 import com.phokaia.events.KafkaTopics;
 
 @Configuration 
-public class KafkaTopicConifg {
+public class KafkaTopicConfig {
 
     
     @Bean 
