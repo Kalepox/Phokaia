@@ -38,7 +38,7 @@ public class AccountEventProducer {
         kafkaTemplate.send(KafkaTopics.TRANSACTION_FAILED, event.transactionId(), event)
                 .whenComplete((result, ex)->{
                     if(ex != null){
-                        log.error("Failed to publish TransactionFailed{}", event.transactionId(), ex);
+                        log.error("Failed to publish TransactionFailed {}", event.transactionId(), ex);
                     }
                     else{
                         log.info("Published TransactionFailed {} to partition {}",
