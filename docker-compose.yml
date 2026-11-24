@@ -30,6 +30,19 @@ services:
     volumes:
       - transaction-db-data:/var/lib/postgresql/data
 
+  # Database owned by notification-service
+  notification-db:
+    image: postgres:17
+    container_name: phokaia-notification-db
+    environment:
+      POSTGRES_DB: notificationdb
+      POSTGRES_USER: phokaia
+      POSTGRES_PASSWORD: phokaia
+    ports:
+      - "5434:5432"
+    volumes:
+      - notification-db-data:/var/lib/postgresql/data
+
   # Kafka message broker, single node in KRaft mode (no ZooKeeper)
   kafka:
     image: apache/kafka:4.1.0
@@ -70,3 +83,4 @@ services:
 volumes:
   account-db-data:
   transaction-db-data:
+  notification-db-data:
