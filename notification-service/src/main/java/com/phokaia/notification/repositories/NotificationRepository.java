@@ -8,6 +8,6 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
 
     List<Notification> findByAccountCodeOrderByCreatedAtDesc(String accountCode);
 
-    boolean existsByTransaction(String transactionId);
+    boolean existsByTransactionId(String transactionId);
 
 }
